@@ -1,16 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { getClientWithLeastBalance } from "../exercises/e7";
-import { bankAccounts } from "../data/data";
+import { getClientWithLeastPositiveBalance } from "../exercises/e7";
+import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data";
 
 describe('getClientWithLeastBalance', () => {
   it('Should exist', () => {
-    expect(getClientWithLeastBalance).toBeInstanceOf(Function);
+    expect(getClientWithLeastPositiveBalance).toBeInstanceOf(Function);
   });
   it('Should return an array of 1 item (object)', () => {
-    expect(getClientWithLeastBalance(bankAccounts).length).toEqual(1);
+    expect(getClientWithLeastPositiveBalance(bankAccounts).length).toEqual(1);
   });
-  it('Should return an exact string value', () => {
-    expect(getClientWithLeastBalance(bankAccounts)).toEqual([
+  it('Should return an array with an object if there is an account with least balance, but greater than > 0', () => {
+    expect(getClientWithLeastPositiveBalance(bankAccounts)).toEqual([
       {
         id: 5,
         name: 'Phil',
@@ -19,5 +19,8 @@ describe('getClientWithLeastBalance', () => {
         withdrawals: [ 100 ]
       }
     ]);
+  });
+  it('Should return an empty array if there is no account with balance greater than > 0', () => {
+    expect(getClientWithLeastPositiveBalance(bankAccountsNoPositiveBalance)).toEqual([]);
   });
 });
