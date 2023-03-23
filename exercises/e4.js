@@ -5,11 +5,21 @@
 
 export function findMinValueInArray(array) {
   // Your code goes here...
+  const min = Math.min(...array);
+  console.log("Min:", min);
+  return "Min:", min;
 }
+
+console.log(findMinValueInArray([1, 2, 3, 30]));
 
 export function findMaxValueInArray(array) {
   // Your code goes here...
+  const max = Math.max(...array);
+  console.log("Max:", max);
+  return "Max:", max;
 }
+
+console.log(findMaxValueInArray([1, 2, 3, 30]));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-4"

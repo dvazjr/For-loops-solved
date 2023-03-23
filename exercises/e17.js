@@ -1,16 +1,19 @@
-
 // EXERCISE 17
 // Please, read the exercise-info/includes.md to get the initial data of what is the expected result of this exercise.
 // doesArrayInclude(['a', 'b', 'c'], 'a') => true
 // doesArrayInclude(['a', 'b', 'c'], 'f') => false
 // NOTE: You can NOT use the array.includes() method in your code
+const array1 = [1, 2, 3];
 
 export function doesArrayInclude(array, value) {
-  // Your code goes here...
-
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === value) {
+      return true;
+    }
+  }
+  return false;
 }
-
-
+doesArrayInclude(array1, isValueOfTwoInThere);
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-17"

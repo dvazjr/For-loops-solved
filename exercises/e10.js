@@ -1,13 +1,19 @@
+import { bankAccounts } from "./data/data.js";
 // EXERCISE 10
 // Return an array of account holders names that contains a given letter
 // Array example: bankAccounts in /data/data.js
 // getClientsWithLetterInName(bankAccounts, 'e') => ['Kevin', 'Steven', ...]
 
 export function getClientsWithLetterInName(array, letter) {
-  // Your code goes here...
+  const filteredNames = array
+    .filter((account) =>
+      account.name.toLowerCase().includes(letter.toLowerCase())
+    )
+    .map((account) => account.name);
 
+  return filteredNames;
 }
-
+console.log(getClientsWithLetterInName(bankAccounts, "r"));
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-10"
 // If the test has all tests passed, switch to the next exercise file
