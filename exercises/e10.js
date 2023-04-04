@@ -8,14 +8,16 @@ export function getClientsWithLetterInName(array, letter) {
   let arrayOfNames = [];
 
   for (const account of array) {
-    if (account.name.toLowerCase().includes(letter.toLowerCase())) {
-      arrayOfNames.push(account.name);
+    for (let i = 0; i < account.name.length; i++) {
+      if (account.name[i].toLowerCase() === letter.toLowerCase()) {
+        arrayOfNames.push(account.name);
+      }
     }
   }
   return arrayOfNames;
 }
 
-console.log(getClientsWithLetterInName(bankAccounts, "m"));
+console.log(getClientsWithLetterInName(bankAccounts, "c"));
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-10"
 // If the test has all tests passed, switch to the next exercise file
