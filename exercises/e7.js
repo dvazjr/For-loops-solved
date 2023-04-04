@@ -5,13 +5,20 @@ import { bankAccounts } from "./data/data.js";
 // getClientWithLeastBalance(bankAccounts) => [{ name: 'SomeName', balance: 32, ... }]
 
 export function getClientWithLeastBalance(array) {
-  const filteredAccounts = array.filter((account) => account.balance > 0);
-
-  const sortedAccounts = filteredAccounts.sort((a, b) => a.balance - b.balance);
-
-  const accountWithLowestBalance = sortedAccounts[0];
-
-  return [accountWithLowestBalance];
+  let arrayOfPoorGuy = [];
+  let lowestBalance = null;
+  for (let i = 0; i < array.length; i++) {
+    if (
+      array[i].balance != 0 &&
+      (lowestBalance === null || array[i].balance < lowestBalance.balance)
+    ) {
+      lowestBalance = array[i];
+    }
+  }
+  if (lowestBalance) {
+    arrayOfPoorGuy.push(lowestBalance);
+  }
+  return arrayOfPoorGuy;
 }
 
 console.log(getClientWithLeastBalance(bankAccounts));

@@ -6,24 +6,30 @@ import { bankAccounts } from "./data/data.js";
 // getClientsWithWrongBalance(bankAccounts) => [{ name: 'Name1', balance: 32, ... }, { name: 'Name2', balance: 3523, ... }]
 
 export function getClientsWithWrongBalance(array) {
-  const actualBalance = array.map((account) => {
-    const totalDeposits =
-      account.deposits?.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue;
-      }, 0) ?? 0;
-    const totalWithdrawals =
-      account.withdrawals?.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue;
-      }, 0) ?? 0;
+  const wrongBalanceArray = [];
 
-    return totalDeposits - totalWithdrawals;
-  });
+  for (let i = 0; i < array.length; i++) {
+    const accounts = array[i];
+    let sum = 0;
+    let sumDeposits = 0;
+    let sumWithdrawals = 0;
+    if (accounts.deposits) {
+      for (let j = 0; j < accounts.deposits.length; j++) {
+        sumDeposits += accounts.deposits[j];
+      }
+    }
 
-  const wrongBalances = array.filter((accounts, index) => {
-    return accounts.balance !== actualBalance[index];
-  });
-
-  return wrongBalances;
+    if (accounts.withdrawals) {
+      for (let k = 0; k < accounts.withdrawals.length; k++) {
+        sumWithdrawals += accounts.withdrawals[k];
+      }
+    }
+    let realBalance = sumDeposits - sumWithdrawals;
+    if (accounts.balance != realBalance) {
+      wrongBalanceArray.push(accounts);
+    }
+  }
+  return wrongBalanceArray;
 }
 
 console.log(getClientsWithWrongBalance(bankAccounts));

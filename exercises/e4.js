@@ -4,19 +4,26 @@
 // findMaxValueInArray([2, 45, 32, 3, 0, 46, 12]) => 46
 
 export function findMinValueInArray(array) {
-  // Your code goes here...
-  const min = Math.min(...array);
-  console.log("Min:", min);
-  return "Min:", min;
+  let minValue = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < minValue) {
+      minValue = array[i];
+    }
+  }
+  return minValue;
 }
 
 console.log(findMinValueInArray([1, 2, 3, 30]));
 
 export function findMaxValueInArray(array) {
   // Your code goes here...
-  const max = Math.max(...array);
-  console.log("Max:", max);
-  return "Max:", max;
+  let maxValue = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > maxValue) {
+      maxValue = array[i];
+    }
+  }
+  return maxValue;
 }
 
 console.log(findMaxValueInArray([1, 2, 3, 30]));

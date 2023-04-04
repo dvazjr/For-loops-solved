@@ -5,17 +5,23 @@ import { bankAccounts } from "./data/data.js";
 // getAllDepositsGreaterThanOneHundred(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllDepositsGreaterThanOneHundred(array) {
-  const filteredDeposits = bankAccounts.reduce((result, account) => {
-    const deposits = account.deposits?.filter((deposit) => deposit > 100);
-    if (deposits && deposits.length > 0) {
-      result.push(...deposits);
-    }
-    return result;
-  }, []);
+  const depositsArray = [];
 
-  return filteredDeposits;
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
+    if (account.deposits) {
+      for (let j = 0; j < account.deposits.length; j++) {
+        const deposit = account.deposits[j];
+        if (deposit > 100) {
+          depositsArray.push(deposit);
+        }
+      }
+    }
+  }
+  return depositsArray;
 }
-getAllDepositsGreaterThanOneHundred(bankAccounts);
+
+console.log(getAllDepositsGreaterThanOneHundred(bankAccounts));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"

@@ -8,19 +8,17 @@ import { bankAccounts } from "./data/data.js";
 export function getAllWithdrawals(array) {
   const withdrawals = [];
 
-  array.forEach((account) => {
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
     let sum = 0;
 
     if (account.withdrawals) {
-      sum = account.withdrawals.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
+      for (let j = 0; j < account.withdrawals.length; j++) {
+        sum += account.withdrawals[j];
+      }
     }
-
     withdrawals.push(sum);
-  });
-
+  }
   return withdrawals;
 }
 

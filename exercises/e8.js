@@ -5,12 +5,23 @@ import { bankAccounts } from "./data/data.js";
 // getClientWithGreatestBalance(bankAccounts) => [{ name: 'SomeName', balance: 32, ... }]
 
 export function getClientWithGreatestBalance(array) {
-  const maxBalance = Math.max(...array.map((account) => account.balance));
-  return array.filter((account) => account.balance === maxBalance);
+  let arrayOfRichObject = [];
+  let greatestBalance = null;
+  for (let i = 0; i < array.length; i++) {
+    if (
+      greatestBalance === null ||
+      array[i].balance > greatestBalance.balance
+    ) {
+      greatestBalance = array[i];
+    }
+  }
+  if (greatestBalance) {
+    arrayOfRichObject.push(greatestBalance);
+  }
+  return arrayOfRichObject;
 }
 
-const accountsWithGreatestBalance = getClientWithGreatestBalance(bankAccounts);
-console.log(accountsWithGreatestBalance);
+console.log(getClientWithGreatestBalance(bankAccounts));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"

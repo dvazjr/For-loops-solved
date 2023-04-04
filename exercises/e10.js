@@ -5,15 +5,17 @@ import { bankAccounts } from "./data/data.js";
 // getClientsWithLetterInName(bankAccounts, 'e') => ['Kevin', 'Steven', ...]
 
 export function getClientsWithLetterInName(array, letter) {
-  const filteredNames = array
-    .filter((account) =>
-      account.name.toLowerCase().includes(letter.toLowerCase())
-    )
-    .map((account) => account.name);
+  let arrayOfNames = [];
 
-  return filteredNames;
+  for (const account of array) {
+    if (account.name.toLowerCase().includes(letter.toLowerCase())) {
+      arrayOfNames.push(account.name);
+    }
+  }
+  return arrayOfNames;
 }
-console.log(getClientsWithLetterInName(bankAccounts, "r"));
+
+console.log(getClientsWithLetterInName(bankAccounts, "m"));
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-10"
 // If the test has all tests passed, switch to the next exercise file

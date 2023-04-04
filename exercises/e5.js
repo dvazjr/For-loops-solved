@@ -5,12 +5,13 @@ import { bankAccounts } from "./data/data.js";
 // getAllClientNames(bankAccounts) => ['Kevin', 'Spenser']
 
 export function getAllClientNames(array) {
-  const names = array.map((account) => account.name);
-  return names;
+  let arrayOfNames = [];
+  for (let i = 0; i < array.length; i++) {
+    arrayOfNames.push(array[i].name);
+  }
+  return arrayOfNames;
 }
-
-const clientNames = getAllClientNames(bankAccounts);
-console.log(clientNames);
+console.log(getAllClientNames(bankAccounts));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-5"

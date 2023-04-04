@@ -6,9 +6,13 @@ import { bankAccounts } from "./data/data.js";
 
 export function getClientsWithBalanceOverOneHundred(array) {
   // Your code goes here...
-  const filteredAccounts = array.filter((account) => account.balance > 100);
-
-  return filteredAccounts;
+  let arrayOfHundreds = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].balance >= 100) {
+      arrayOfHundreds.push(array[i]);
+    }
+  }
+  return arrayOfHundreds;
 }
 console.log(getClientsWithBalanceOverOneHundred(bankAccounts));
 

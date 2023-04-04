@@ -8,10 +8,11 @@
  * */
 
 export function getAverage(array) {
-  // Your code goes here...
-  const sum = array.reduce((sum, current) => sum + current, 0);
-  const average = sum / array.length;
-  return average;
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+  return sum / array.length;
 }
 
 /**
@@ -22,12 +23,16 @@ export function getAverage(array) {
  * */
 
 export function getStringSum(str) {
-  const numbers = str.match(/\d/g) || [];
-  const sum = numbers.reduce((acc, current) => acc + parseInt(current), 0);
+  let sum = 0;
+  for (const elem of str) {
+    const num = parseInt(elem);
+    if (!isNaN(num)) {
+      sum += num;
+    }
+  }
+
   return sum;
 }
-
-console.log(getStringSum("GH2U87A"));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"

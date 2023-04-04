@@ -5,15 +5,23 @@ import { bankAccounts } from "./data/data.js";
 // getAllAccountsWithSumsOfDepositsLess2000(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllAccountsWithSumsOfDepositsLess2000(array) {
-  const filteredAccounts = bankAccounts.filter((account) => {
-    const sumOfDeposits = (account.deposits || []).reduce(
-      (acc, curr) => acc + curr,
-      0
-    );
-    return sumOfDeposits < 2000 || !account.deposits;
-  });
-  console.log(filteredAccounts);
-  return filteredAccounts;
+  const littleDepositsArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let sum = 0;
+    let accounts = array[i];
+
+    if (accounts.deposits) {
+      for (let j = 0; j < accounts.deposits.length; j++) {
+        const bigDeposits = accounts.deposits[j];
+        sum += bigDeposits;
+      }
+    }
+    if (sum < 2000 || sum === 0) {
+      littleDepositsArray.push(accounts);
+    }
+  }
+  return littleDepositsArray;
 }
 
 getAllAccountsWithSumsOfDepositsLess2000(bankAccounts);
